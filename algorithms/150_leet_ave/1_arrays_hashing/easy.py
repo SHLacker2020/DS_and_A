@@ -20,6 +20,10 @@ class ContainsDuplicateSolution:
             hash_set.add(n)
         return False
 
+    def contains_duplicate(self, nums):
+        for i in nums:
+            return False if nums[i]
+
 print(ContainsDuplicateSolution().contains_dup([1,2,3,3,4,5])) # True
 print(ContainsDuplicateSolution().contains_dup([1,2,3,4,5])) # False
 print()
