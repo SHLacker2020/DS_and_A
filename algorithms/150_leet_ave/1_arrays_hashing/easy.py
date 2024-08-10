@@ -1,14 +1,15 @@
+from ast import In
 from typing import List
 
 # Easy Array Hashing Problems
 
 class ContainsDuplicateSolution:
-    def contains_dup(self, nums: List[int]) -> bool:
+    def contains_dup(self, nums: List) -> bool:
         """ Time: O(n)
             Space: O(n)
 
         Args:
-            nums (List[int]): List to check
+            nums (List): List to check
 
         Returns:
             bool: True if nums contains duplicate
@@ -21,13 +22,15 @@ class ContainsDuplicateSolution:
         return False
 
     def contains_duplicate(self, nums):
+        hash = {}
         for i in nums:
-            if nums[i] in nums:
-                return False
-        return True
+            if i in hash:
+                hash[i] += 1
+            else:
+                hash[i] = 1
+        return hash
 
-
-print(ContainsDuplicateSolution().contains_duplicate([1,2,3,3,4,5])) # True
+print(ContainsDuplicateSolution().contains_duplicate(["a","b","c","c","d"])) # True
 print(ContainsDuplicateSolution().contains_dup([1,2,3,4,5])) # False
 print()
 
