@@ -22,9 +22,12 @@ class ContainsDuplicateSolution:
 
     def contains_duplicate(self, nums):
         for i in nums:
-            return False if nums[i]
+            if nums[i] in nums:
+                return False
+        return True
 
-print(ContainsDuplicateSolution().contains_dup([1,2,3,3,4,5])) # True
+
+print(ContainsDuplicateSolution().contains_duplicate([1,2,3,3,4,5])) # True
 print(ContainsDuplicateSolution().contains_dup([1,2,3,4,5])) # False
 print()
 
