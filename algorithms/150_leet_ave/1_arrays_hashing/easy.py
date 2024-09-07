@@ -49,3 +49,4 @@ print(AnagramSolution().isAnagram("anagram", "nagaram")) # True
 print(AnagramSolution().isAnagram("anagram", "Hello")) # False
 print()
 
+# This note is for a quick how to video.
