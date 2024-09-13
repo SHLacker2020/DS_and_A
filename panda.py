@@ -20,3 +20,6 @@ mean_df = df22.mean()
 
 print(mean_df)
 
+"E" = 23
+
+"B" = 44
