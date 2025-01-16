@@ -72,10 +72,7 @@ print(my_hash([1,1,2,3,4,4,4,5,5,6,7,7,8,9,10]))
 def my_hash_string(s):
     hashmap = {}
     for i in s.lower().replace(" ", ""):
-        if i in hashmap:
-            hashmap[i] += 1
-        else:
-            hashmap[i] = 1
+        hashmap[i] = hashmap.get(i, 0) + 1
     return hashmap
 
 print(my_hash_string("Hhello  World"))
@@ -87,3 +84,17 @@ def is_palindrome(x):
 
 
 print(is_palindrome(121))
+
+
+# iterate through a list of strings and group them by their length in sublists
+def group_by_length(strings):
+    length_map = {}
+    for string in strings:
+        length = len(string)
+        if length in length_map:
+            length_map[length].append(string)
+        else:
+            length_map[length] = [string]
+    return list(length_map.values())
+
+print(group_by_length(["a", "bb", "ccc", "dd", "eee", "ffff"]))
