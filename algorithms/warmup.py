@@ -41,7 +41,7 @@ print(two_sum([2,7,11,15], 9))
 
 # Example of using the .sort() method in Python
 def merge(nums1, m, nums2, n):
-    nums1[m:] = nums2
+    nums1[m:] = nums2 # This is a way to
     nums1.sort()
 
 print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
@@ -55,3 +55,35 @@ def extend_example():
     print(list1)
 
 extend_example()
+
+# Create a hashmap that counts the number of times an element appears in an array
+def my_hash(arr):
+    hashmap = {}
+    for i in arr:
+        if i in hashmap:
+            hashmap[i] += 1
+        else:
+            hashmap[i] = 1
+    return hashmap
+
+print(my_hash([1,1,2,3,4,4,4,5,5,6,7,7,8,9,10]))
+
+# Create a hashmap that counts the number of times a character appears in a string
+def my_hash_string(s):
+    hashmap = {}
+    for i in s.lower().replace(" ", ""):
+        if i in hashmap:
+            hashmap[i] += 1
+        else:
+            hashmap[i] = 1
+    return hashmap
+
+print(my_hash_string("Hhello  World"))
+
+# isPalindrome: Given a int, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+def is_palindrome(x):
+    s = str(x)
+    return s == s[::-1]
+
+
+print(is_palindrome(121))
