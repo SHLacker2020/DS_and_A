@@ -15,6 +15,7 @@ def fizz_buzz(n):
 
 print(fizz_buzz(25))
 
+
 # Example of a nested loop in Python
 def nested_loop_example(nums):
     for i in nums:
@@ -25,6 +26,8 @@ def nested_loop_example(nums):
 nested_loop_example([66,67,68])
 print(len([1,2,3,4,5]))
 
+
+# Example of using a hashmap in Python
 def two_sum(arr, targ):
     hashmap = {}
     for i in range(len(arr)):
@@ -33,11 +36,16 @@ def two_sum(arr, targ):
             return [i, hashmap[comp]]
         hashmap[arr[i]] = i
 
+print(two_sum([2,7,11,15], 9))
+
+
+# Example of using the .sort() method in Python
 def merge(nums1, m, nums2, n):
     nums1[m:] = nums2
     nums1.sort()
 
 print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
+
 
 # Example of using .extend in Python
 def extend_example():
