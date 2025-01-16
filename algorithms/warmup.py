@@ -1,25 +1,34 @@
+# FizzBuzz: Write a function that prints the numbers from 1 to 100.
+# But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz".
+# For numbers which are multiples of both three and five, print "FizzBuzz".
 
-
-# Create an algorithm that takes two lists of integers, and returns a list of integers that are in both lists.
-def common_elements(list1, list2):
-    com_els = []
-    for i in list1:
-        if i in list2:
-            com_els.append(i)
-    return com_els
-
-print(common_elements([1, 2, 3, 4, 5], [4, 5, 6, 7, 8]))
-
-# Create an algorithm that takes in a list of integers, and returns a hash with the number of times each integer appears in the list.
-def count_elements(list1):
-    count = {}
-    for i in list1:
-        if i in count:
-            count[i] += 1
+def fizz_buzz(n):
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            print("FizzBuzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        elif i % 5 == 0:
+            print("Buzz")
         else:
-            count[i] = 1
-    return count
+            print(i)
 
-print(count_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+print(fizz_buzz(25))
 
-#Test Commit
+# Example of a nested loop in Python
+def nested_loop_example(nums):
+    for i in nums:
+        for j in nums:
+            print(f"i: {i}, j: {j}")
+            print(f"index i: {nums.index(i)}, index j: {nums.index(j)}")
+
+nested_loop_example([66,67,68])
+print(len([1,2,3,4,5]))
+
+def two_sum(arr, targ):
+    hashmap = {}
+    for i in range(len(arr)):
+        comp = targ - arr[i]
+        if comp in hashmap:
+            return [i, hashmap[comp]]
+        hashmap[arr[i]] = i
