@@ -32,3 +32,18 @@ def two_sum(arr, targ):
         if comp in hashmap:
             return [i, hashmap[comp]]
         hashmap[arr[i]] = i
+
+def merge(nums1, m, nums2, n):
+    nums1[m:] = nums2
+    nums1.sort()
+
+print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
+
+# Example of using .extend in Python
+def extend_example():
+    list1 = [1, 2, 3]
+    list2 = [4, 5, 6]
+    list1.extend(list2)
+    print(list1)
+
+extend_example()
