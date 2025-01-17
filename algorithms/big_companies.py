@@ -134,3 +134,49 @@ def hcfRec(a, b, level = 0):
     return hcfRec(b, a % b, level + 1)
 
 print(hcfRec(70, 15))
+
+
+
+# Write a program to reverse the digits of a number.
+def reverseNumber(n):
+    return int(str(n)[::-1])
+
+# Write a program to check if a number is a palindrome.
+def isPalindrome(n):
+    return n == reverseNumber(n)
+
+# Write a program to check if a number is a prime number.
+def isPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+# Recursive way
+def isPrimeRec(n, i = 2):
+    # breakpoint()
+    if n <= 1:
+        return False
+    if i == n:
+        return True
+    if n % i == 0:
+        return False
+    return isPrimeRec(n, i + 1)
+
+# Write a program to find the sum of digits of a number.
+def sumOfDigits(n):
+    for i in str(n):
+        n += int(i)
+    return n
+
+# Find the LCM(Least Common Multiple) of two numbers. The LCM of two numbers is the smallest number that is a multiple of both numbers.
+def lcm(a, b):
+    smaller = min(a, b)
+    while True:
+        if smaller % a == 0 and smaller % b == 0:
+            return smaller
+        smaller += 1
+print(lcm(4, 6))
+# Output: 12
+
