@@ -98,3 +98,22 @@ def group_by_length(strings):
     return list(length_map.values())
 
 print(group_by_length(["a", "bb", "ccc", "dd", "eee", "ffff"]))
+
+
+def isAnagram(s, t):
+    return sorted(s) == sorted(t)
+
+print(isAnagram("anagram", "nagaram"))
+
+
+def groupAnagrams(strs):
+    anagrams = {}
+    for s in strs:
+        key = ''.join(sorted(s))
+        if key in anagrams:
+            anagrams[key].append(s)
+        else:
+            anagrams[key] = [s]
+    return list(anagrams.values())
+
+print(groupAnagrams(["act","pots","tops","cat","stop","hat"]))
