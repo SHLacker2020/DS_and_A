@@ -1,7 +1,6 @@
 # FizzBuzz: Write a function that prints the numbers from 1 to 100.
 # But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz".
 # For numbers which are multiples of both three and five, print "FizzBuzz".
-
 def fizz_buzz(n):
     for i in range(1, n + 1):
         if i % 3 == 0 and i % 5 == 0:
@@ -16,32 +15,28 @@ def fizz_buzz(n):
 print(fizz_buzz(25))
 
 
-# Example of a nested loop in Python
-def nested_loop_example(nums):
-    for i in nums:
-        for j in nums:
-            print(f"i: {i}, j: {j}")
-            print(f"index i: {nums.index(i)}, index j: {nums.index(j)}")
-
-nested_loop_example([66,67,68])
-print(len([1,2,3,4,5]))
-
-
 # Example of using a hashmap in Python
-def two_sum(arr, targ):
-    hashmap = {}
+# Write a function that checks if an array has two numbers that add up to a target number
+def two_sum(arr, target):
+    hashMap = {}
     for i in range(len(arr)):
-        comp = targ - arr[i]
-        if comp in hashmap:
-            return [i, hashmap[comp]]
-        hashmap[arr[i]] = i
+        compare = target - arr[i]
+        if compare in hashMap:
+            return [hashMap[compare], i]
+        hashMap[arr[i]] = i
 
-print(two_sum([2,7,11,15], 9))
+print(two_sum([2,7,11,15], 22))
+# output: [1, 3]
 
 
-# Example of using the .sort() method in Python
+# Merge two arrays in Python
+def merge_two_arrays(arr1, arr2):
+    arr1 = arr2
+    return arr1
+print(merge_two_arrays([1,2,3], [4,5,6]))
+
 def merge(nums1, m, nums2, n):
-    nums1[m:] = nums2 # This is a way to
+    nums1[m:] = nums2 # This is a way to merge two lists in Python
     nums1.sort()
 
 print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
