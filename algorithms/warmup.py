@@ -1,58 +1,114 @@
-
-
-# Create an algorithm that takes two lists of integers, and returns a list of integers that are in both lists.
-def common_elements(list1, list2):
-    com_els = []
-    for i in list1:
-        if i in list2:
-            com_els.append(i)
-    return com_els
-
-print(common_elements([1, 2, 3, 4, 5], [4, 5, 6, 7, 8]))
-
-# Create an algorithm that takes in a list of integers, and returns a hash with the number of times each integer appears in the list.
-def count_elements(list1):
-    count = {}
-    for i in list1:
-        if i in count:
-            count[i] += 1
+# FizzBuzz: Write a function that prints the numbers from 1 to 100.
+# But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz".
+# For numbers which are multiples of both three and five, print "FizzBuzz".
+def fizz_buzz(n):
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            print("FizzBuzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        elif i % 5 == 0:
+            print("Buzz")
         else:
-            count[i] = 1
-    return count
+            print(i)
 
-print(count_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
-
-#Test Commit
-
-def fibArr(n):
-    arr = [0,1]
-    for i in range(1, n):
-        arr.append(arr[i-1] + arr[i])
-    return arr
-
-print(fibArr(5))
-
-def primeNum(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i == 0:
-            return False
-    return True
-
-print(primeNum(999983))
+print(fizz_buzz(25))
 
 
+# Example of using a hashmap in Python
+# Write a function that checks if an array has two numbers that add up to a target number
+def two_sum(arr, target):
+    hashMap = {}
+    for i in range(len(arr)):
+        compare = target - arr[i]
+        if compare in hashMap:
+            return [hashMap[compare], i]
+        hashMap[arr[i]] = i
 
-def primeRec(n, i=2, level=0):
-    # breakpoint()
-    if n <= 1:
-        return False
-    if i == n:
-        return True
-    if n % i == 0:
-        return False
-    return primeRec(n, i+1, level+1)
+print(two_sum([2,7,11,15], 22))
+# output: [1, 3]
 
-# print(primeRec(999983))
 
+# Merge two arrays in Python
+def merge_two_arrays(arr1, arr2):
+    arr1 = arr2
+    return arr1
+print(merge_two_arrays([1,2,3], [4,5,6]))
+
+def merge(nums1, m, nums2, n):
+    nums1[m:] = nums2 # This is a way to merge two lists in Python
+    nums1.sort()
+
+print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
+
+
+# Example of using .extend in Python
+def extend_example():
+    list1 = [1, 2, 3]
+    list2 = [4, 5, 6]
+    list1.extend(list2)
+    print(list1)
+
+extend_example()
+
+# Create a hashmap that counts the number of times an element appears in an array
+def my_hash(arr):
+    hashmap = {}
+    for i in arr:
+        if i in hashmap:
+            hashmap[i] += 1
+        else:
+            hashmap[i] = 1
+    return hashmap
+
+print(my_hash([1,1,2,3,4,4,4,5,5,6,7,7,8,9,10]))
+
+# Create a hashmap that counts the number of times a character appears in a string
+def my_hash_string(s):
+    hashmap = {}
+    for i in s.lower().replace(" ", ""):
+        hashmap[i] = hashmap.get(i, 0) + 1
+    return hashmap
+
+print(my_hash_string("Hhello  World"))
+
+# isPalindrome: Given a int, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+def is_palindrome(x):
+    s = str(x)
+    return s == s[::-1]
+
+
+print(is_palindrome(121))
+
+
+# iterate through a list of strings and group them by their length in sublists
+def group_by_length(strings):
+    length_map = {}
+    for string in strings:
+        length = len(string)
+        if length in length_map:
+            length_map[length].append(string)
+        else:
+            length_map[length] = [string]
+    return list(length_map.values())
+
+print(group_by_length(["a", "bb", "ccc", "dd", "eee", "ffff"]))
+
+
+def isAnagram(s, t):
+    return sorted(s) == sorted(t)
+
+print(isAnagram("anagram", "nagaram"))
+
+
+def groupAnagrams(strs):
+    anagrams = {}
+    for s in strs:
+        key = ''.join(sorted(s))
+        if key in anagrams:
+            anagrams[key].append(s)
+        else:
+            anagrams[key] = [s]
+    return list(anagrams.values())
+
+print(groupAnagrams(["act","pots","tops","cat","stop","hat"]))
