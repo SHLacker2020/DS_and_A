@@ -35,14 +35,14 @@ def merge_two_arrays(arr1, arr2):
     return arr1
 print(merge_two_arrays([1,2,3], [4,5,6]))
 
-def merge(nums1, m, nums2, n):
+def merge(nums1, m, nums2):
     nums1[m:] = nums2 # This is a way to merge two lists in Python
     nums1.sort()
 
-print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
+print(merge([1,2,3,0,0,0], 3, [2,5,6])) # Output: [1, 2, 2, 3, 5, 6]
 
 
-# Example of using .extend in Python
+# Example of using .extend in Pytho
 def extend_example():
     list1 = [1, 2, 3]
     list2 = [4, 5, 6]

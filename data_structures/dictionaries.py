@@ -1,6 +1,6 @@
 
 # DICTIONARY
-# A dictionary is a collection which is unordered, changeable and indexed. 
+# A dictionary is a collection which is unordered, changeable and indexed.
 # No duplicate members.
 hash = {
     "brand": "Ford",
@@ -45,9 +45,34 @@ hash = {}
 for el in arr:
     # Since we can't make the default value 0 and use += 1 like Ruby, we must be
     # much more explicit.
-    hash[el] = 1 + hash.get(el, 0) 
+    hash[el] = 1 + hash.get(el, 0)
     # This says that we want to set the value with the key hash[el]
     # to be 1 + whatever the current value is, AND if there is no current value
     # yet, than set it to 0.
 print(hash)
 
+def longest_bitonic_subarray(arr):
+    n = len(arr)
+    if n == 0:
+        return 0
+
+    bitonic_subarrays = {}
+    start = 0
+
+    while start < n:
+        end = start
+        while end + 1 < n and arr[end] < arr[end + 1]:
+            end += 1
+        peak = end
+        while end + 1 < n and arr[end] > arr[end + 1]:
+            end += 1
+        if start != end:
+            bitonic_subarrays[(start, end)] = arr[start:end + 1]
+        start = max(start + 1, end)
+
+    longest_subarray = max(bitonic_subarrays.values(), key=len, default=[])
+    return len(longest_subarray)
+
+# Example usage:
+print(longest_bitonic_subarray([1, 2, 3, 4, 5, 3, 1]))  # Output: 7
+print(longest_bitonic_subarray([1, 11, 2, 10, 4, 5, 2, 1]))  # Output: 6
