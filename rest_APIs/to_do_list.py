@@ -9,10 +9,14 @@ task_id = 1 # Initialize a task ID counter
 users = {} # Initialize an empty dictionary to store users
 
 # POST request to create a new user
+# To create a user, send a JSON object with "username" and "password" fields in the request body
 @app.route('/users', methods=['POST'])
 def create_user():
     username = request.json['username']
     password = request.json['password']
+    # make a message for a 400 error
+    if not username or not password:
+        return jsonify({"message": "Please enter like: username: password"}), 400
     if username in users:
         return jsonify({"message": "User already exists"}), 400
     users[username] = password
@@ -53,8 +57,8 @@ def add_task():
     global users # Access the global users dictionary
     auth = request.authorization
     new_task = {"id": task_id,
-                "task": request.json['task'],
-                "owner": request.authorization.username} # Create a new task object with the given description
+                "task": request.json['task'] if request.json and 'task' in request.json else None,
+                "owner": auth.username} # Create a new task object with the given description
     tasks.append(new_task) # Add the new task to the list
     task_id += 1
     return jsonify(new_task)
