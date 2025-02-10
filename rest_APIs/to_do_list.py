@@ -12,11 +12,11 @@ users = {} # Initialize an empty dictionary to store users
 # To create a user, send a JSON object with "username" and "password" fields in the request body
 @app.route('/users', methods=['POST'])
 def create_user():
+    # make sure request is not empty
+    if request.json is None:
+        return jsonify({"message": "Please enter like: username: password"}), 400
     username = request.json['username']
     password = request.json['password']
-    # make a message for a 400 error
-    if not username or not password:
-        return jsonify({"message": "Please enter like: username: password"}), 400
     if username in users:
         return jsonify({"message": "User already exists"}), 400
     users[username] = password
@@ -73,9 +73,11 @@ def add_task():
 @app.route('/tasks/<int:task_id>', methods=['PUT'])
 @requires_auth
 def update_task(task_id):
+    if request.json is None or 'task' not in request.json:
+        return jsonify({"message": "Task description is required"}), 400
     for task in tasks:
         if task['id'] == task_id:
-            task['task'] = request.json['task'] # if the task ID matches, update the task description
+            task['task'] = request.json['task'] # Update the task description
     return jsonify({"message": "Task updated successfully"}) # return a success message
 
 # DELETE request to delete a task
