@@ -56,10 +56,16 @@ def add_task():
     global task_id # Access the global task ID counter
     global users # Access the global users dictionary
     auth = request.authorization
-    new_task = {"id": task_id,
-                "task": request.json['task'] if request.json and 'task' in request.json else None,
-                "owner": auth.username} # Create a new task object with the given description
-    tasks.append(new_task) # Add the new task to the list
+    # Check if the user is authenticated
+    if auth is None or not check_auth(auth.username, auth.password):
+        return jsonify({"message": "Authentication required"}), 401
+    # Check if the object is empty
+    if request.json is None or 'task' not in request.json:
+        return jsonify({"message": "Task description is required"}), 400
+    new_task = { "id": task_id,
+                "task": request.json['task'],
+                "owner": auth.username }
+    tasks.append(new_task)
     task_id += 1
     return jsonify(new_task)
 
